@@ -114,9 +114,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cfpb/cfpb-design-system@npm:^5.7.0":
+  version: 5.7.0
+  resolution: "@cfpb/cfpb-design-system@npm:5.7.0"
+  dependencies:
+    "@fontsource-variable/source-sans-3": "npm:5.2.9"
+    tippy.js: "npm:6.3.7"
+  checksum: 10/c84d5fff4619b34279c2f0309860bbf1b29755a31a076c2332fe7aa264fa2e8b58c6527d83ff4aa7109e1e310e417f1228abd34f5e820437c905510ec43f6f98
+  languageName: node
+  linkType: hard
+
 "@cfpb/design-system-react@git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578":
   version: 1.0.7
-  resolution: "@cfpb/design-system-react@https://github.com/cfpb/design-system-react.git#commit=d8b31c0466f7739d0073b52ba708d60571fe3ef9"
+  resolution: "@cfpb/design-system-react@https://github.com/cfpb/design-system-react.git#commit=004feb0052343ec2cf3c1b09801083b153108fe1"
   dependencies:
     react-select: "npm:^5.10.2"
   peerDependencies:
@@ -125,7 +135,7 @@ __metadata:
     react: 19.2.7
     react-dom: ^19.2.3
     react-router: ^7.18.0
-  checksum: 10/e2062dbd76aa62bf83dae70f1cf5ebfeec3ec9b3b986b39d29461a57dd2566fb24fe51845c4e132aa6a7a78a94310e25814e8bdeb15d4aa92173dfd396979826
+  checksum: 10/8a4528f9d9005f5298d510a9e4a0a23db04d8b084276749889a19e1419ba2ebdbc535aa3d467e7615d6bc2a0cab8a1ee60b86edc97a8029bd6b89d8f4e039d18
   languageName: node
   linkType: hard
 
@@ -300,6 +310,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/source-sans-3@npm:5.2.9":
+  version: 5.2.9
+  resolution: "@fontsource-variable/source-sans-3@npm:5.2.9"
+  checksum: 10/fa48c295cc37cda0ab9bcf08b5e37d156c39fa09cd3caac41bd1cbec6b6b134858ec779ce40aa9be3af8c7970142498896404f4e5a188b3dc17b670fcd8c34c8
+  languageName: node
+  linkType: hard
+
 "@isaacs/fs-minipass@npm:^4.0.0":
   version: 4.0.1
   resolution: "@isaacs/fs-minipass@npm:4.0.1"
@@ -340,6 +357,22 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 10/da0283270e691bdb5543806077548532791608e52386cfbbf3b9e8fb00457859d1bd01d512851161c886eb3a2f3ce6fd9bcf25db8edf3bddedd275bd4a88d606
+  languageName: node
+  linkType: hard
+
+"@lit-labs/ssr-dom-shim@npm:^1.5.0":
+  version: 1.6.0
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.6.0"
+  checksum: 10/144432432e1749c4878a59baf41b2afaadef565675d64b2a8e088c6f54e36f26f67ef43aa93e49d3e6dd38a5e27c41059e981c33accdb4e8c6d47c1048696b80
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^2.1.0":
+  version: 2.1.2
+  resolution: "@lit/reactive-element@npm:2.1.2"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": "npm:^1.5.0"
+  checksum: 10/91ae952d34fba51ac4936f7d6b3a4300e48a54a9e7c77c8747a08148124a2a9a52cd057db059eff8424ae43c6fa342275550793e6ecfc0054bce8286df4214cb
   languageName: node
   linkType: hard
 
@@ -492,6 +525,13 @@ __metadata:
   version: 1.71.0
   resolution: "@oxlint/binding-win32-x64-msvc@npm:1.71.0"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@popperjs/core@npm:^2.9.0":
+  version: 2.11.8
+  resolution: "@popperjs/core@npm:2.11.8"
+  checksum: 10/ddd16090cde777aaf102940f05d0274602079a95ad9805bd20bc55dcc7c3a2ba1b99dd5c73e5cc2753c3d31250ca52a67d58059459d7d27debb983a9f552936c
   languageName: node
   linkType: hard
 
@@ -663,6 +703,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/trusted-types@npm:^2.0.2":
+  version: 2.0.7
+  resolution: "@types/trusted-types@npm:2.0.7"
+  checksum: 10/8e4202766a65877efcf5d5a41b7dd458480b36195e580a3b1085ad21e948bc417d55d6f8af1fd2a7ad008015d4117d5fdfe432731157da3c68678487174e4ba3
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-react@npm:^6.0.2":
   version: 6.0.3
   resolution: "@vitejs/plugin-react@npm:6.0.3"
@@ -780,11 +827,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dsr-test@workspace:."
   dependencies:
+    "@cfpb/cfpb-design-system": "npm:^5.7.0"
     "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578"
     "@types/node": "npm:^24.13.2"
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"
     "@vitejs/plugin-react": "npm:^6.0.2"
+    lit: "npm:^3.3.3"
     oxlint: "npm:^1.69.0"
     react: "npm:^19.2.7"
     react-dom: "npm:^19.2.7"
@@ -1081,6 +1130,37 @@ __metadata:
   version: 1.2.4
   resolution: "lines-and-columns@npm:1.2.4"
   checksum: 10/0c37f9f7fa212b38912b7145e1cd16a5f3cd34d782441c3e6ca653485d326f58b3caccda66efce1c5812bde4961bbde3374fae4b0d11bf1226152337f3894aa5
+  languageName: node
+  linkType: hard
+
+"lit-element@npm:^4.2.0":
+  version: 4.2.2
+  resolution: "lit-element@npm:4.2.2"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": "npm:^1.5.0"
+    "@lit/reactive-element": "npm:^2.1.0"
+    lit-html: "npm:^3.3.0"
+  checksum: 10/268705c5a88c68ceeffb4dc871ffa7a9e5b5405b4907bc408cdc3336ea865b1690b4f4a34155af287200cc0737933c25326ed6816fa2c040b747925717bc21a6
+  languageName: node
+  linkType: hard
+
+"lit-html@npm:^3.3.0":
+  version: 3.3.3
+  resolution: "lit-html@npm:3.3.3"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.2"
+  checksum: 10/d8fc4ccd983ad5c32e5efa98687e6be90dbfb29863ecda124d18452545854fdd97c8b06679182d8fbb2324e5db9ba1e210724e1d3e279545357b031e94ec9139
+  languageName: node
+  linkType: hard
+
+"lit@npm:^3.3.3":
+  version: 3.3.3
+  resolution: "lit@npm:3.3.3"
+  dependencies:
+    "@lit/reactive-element": "npm:^2.1.0"
+    lit-element: "npm:^4.2.0"
+    lit-html: "npm:^3.3.0"
+  checksum: 10/238a6574447f6499b7a4c6e30a4da89907b095ea48d6291fb1de570e937745b84550ced459f9c51632c3010c964403e2d6ebe65caf1500f03779b6049f229f12
   languageName: node
   linkType: hard
 
@@ -1558,6 +1638,15 @@ __metadata:
     fdir: "npm:^6.5.0"
     picomatch: "npm:^4.0.4"
   checksum: 10/f85e8a217d675c3f78d5f0ad25ea4557e7e023ed13ddc2b014da10bd0312eea53a34cd52356af07ccdff777f1243012547656282a4ca70936f68bf5065fbaa71
+  languageName: node
+  linkType: hard
+
+"tippy.js@npm:6.3.7":
+  version: 6.3.7
+  resolution: "tippy.js@npm:6.3.7"
+  dependencies:
+    "@popperjs/core": "npm:^2.9.0"
+  checksum: 10/9bd1c6ab68704dd10b8896fd66e28f3b4b4017a32b8802a9d57a565dee1704df45c249d8363bcaca235dbc0d9a7a90d6f1326f1e6b999f7809b36599a3f92eb3
   languageName: node
   linkType: hard
 
