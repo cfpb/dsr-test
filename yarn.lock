@@ -114,18 +114,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/design-system-react@git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578":
-  version: 1.0.7
-  resolution: "@cfpb/design-system-react@https://github.com/cfpb/design-system-react.git#commit=d8b31c0466f7739d0073b52ba708d60571fe3ef9"
+"@cfpb/design-system-react@git+https://github.com/cfpb/design-system-react#vcc-link-context":
+  version: 1.0.4
+  resolution: "@cfpb/design-system-react@https://github.com/cfpb/design-system-react.git#commit=4444b40e9f92c1f9656ed2d013c5f0c93388e344"
   dependencies:
     react-select: "npm:^5.10.2"
   peerDependencies:
-    "@cfpb/cfpb-design-system": 5.6.1
-    lit: ^3.3.3
-    react: 19.2.7
-    react-dom: ^19.2.3
-    react-router: ^7.18.0
-  checksum: 10/e2062dbd76aa62bf83dae70f1cf5ebfeec3ec9b3b986b39d29461a57dd2566fb24fe51845c4e132aa6a7a78a94310e25814e8bdeb15d4aa92173dfd396979826
+    "@cfpb/cfpb-design-system": 5.3.2
+    react: ^19.2.4
+    react-dom: ^19.2.4
+  checksum: 10/766631a3578d1198a3dfdb0237b1b9d726542eadea0a2ecc0c3ef1f7440b26e8af3d847cadc29f5d722d22698c15e4c1a274f11c9cc530ab8ea7b8f73766b7fc
   languageName: node
   linkType: hard
 
@@ -720,13 +718,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie-es@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "cookie-es@npm:3.1.1"
-  checksum: 10/e40083c42d0e3a4b3caa271775858f8e6cdd31f24b9c445ff08d7a8f4dc01069fc82012bdf1602d5a03fa1d75aba51a3dd33cd8a5db639db2ed17bcfd650f4bc
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:^7.0.0":
   version: 7.1.0
   resolution: "cosmiconfig@npm:7.1.0"
@@ -780,7 +771,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dsr-test@workspace:."
   dependencies:
-    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578"
+    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#vcc-link-context"
     "@types/node": "npm:^24.13.2"
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"
@@ -788,7 +779,6 @@ __metadata:
     oxlint: "npm:^1.69.0"
     react: "npm:^19.2.7"
     react-dom: "npm:^19.2.7"
-    react-router: "npm:^8.0.1"
     typescript: "npm:~6.0.2"
     vite: "npm:^8.1.0"
   languageName: unknown
@@ -1341,21 +1331,6 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 10/5aa564a1cde7d391ac980bedee21202fc90bdea3b399952117f54fb71a932af1e5902020144fb354b4690b2414a0c7aafe798eb617b76a3d441d956db7726fdf
-  languageName: node
-  linkType: hard
-
-"react-router@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "react-router@npm:8.0.1"
-  dependencies:
-    cookie-es: "npm:^3.1.1"
-  peerDependencies:
-    react: ">=19.2.7"
-    react-dom: ">=19.2.7"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-  checksum: 10/1dbeccf7d351b5e1e9950179990d903727ebe152439044e46548776b765bc04bc0139a5064eb7f8720f928136c2cb43aa9175e961e475f797e5bfd6ff03612fa
   languageName: node
   linkType: hard
 
