@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
+import { Button, Heading } from "@cfpb/design-system-react";
 import './App.css'
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
         >
           Count is {count}
         </button>
+
+        <Button label="Click me" />
+        <Heading type={"slug"}>Slug type</Heading>
       </section>
 
       <div className="ticks"></div>
