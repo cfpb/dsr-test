@@ -124,9 +124,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/design-system-react@git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578":
+"@cfpb/design-system-react@npm:^1.0.7":
   version: 1.0.7
-  resolution: "@cfpb/design-system-react@https://github.com/cfpb/design-system-react.git#commit=004feb0052343ec2cf3c1b09801083b153108fe1"
+  resolution: "@cfpb/design-system-react@npm:1.0.7"
   dependencies:
     react-select: "npm:^5.10.2"
   peerDependencies:
@@ -135,7 +135,7 @@ __metadata:
     react: 19.2.7
     react-dom: ^19.2.3
     react-router: ^7.18.0
-  checksum: 10/8a4528f9d9005f5298d510a9e4a0a23db04d8b084276749889a19e1419ba2ebdbc535aa3d467e7615d6bc2a0cab8a1ee60b86edc97a8029bd6b89d8f4e039d18
+  checksum: 10/27ce30e50737299973794d3bf2ab9de610f3ae46dc77ab738912d7c10d2e328b937d57d3b2afc70bfcd195d76ce5f533e5142466203c3c2d252a2153735de164
   languageName: node
   linkType: hard
 
@@ -828,7 +828,7 @@ __metadata:
   resolution: "dsr-test@workspace:."
   dependencies:
     "@cfpb/cfpb-design-system": "npm:^5.7.0"
-    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578"
+    "@cfpb/design-system-react": "npm:^1.0.7"
     "@types/node": "npm:^24.13.2"
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"
