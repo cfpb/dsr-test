@@ -4,9 +4,10 @@ import './App.css'
 function App() {
   return (
     <main className='demo'>
-      <Heading type='slug'>Design System React</Heading>
+      <Heading type='slug'>Pattern A — DSR CSS only</Heading>
       <p className='demo__intro'>
-        Local demo for <code>@cfpb/design-system-react</code> components.
+        Styles from <code>@cfpb/design-system-react/index.css</code>. No full DS
+        stylesheet.
       </p>
 
       <section className='demo__section'>
