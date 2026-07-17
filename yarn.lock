@@ -125,7 +125,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/design-system-react@git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578":
+"@cfpb/design-system-react@git+https://github.com/cfpb/design-system-react.git#89f23bfc00e44a00818efed869804fa61d54eb01":
   version: 1.0.8
   resolution: "@cfpb/design-system-react@https://github.com/cfpb/design-system-react.git#commit=89f23bfc00e44a00818efed869804fa61d54eb01"
   dependencies:
@@ -828,7 +828,7 @@ __metadata:
   resolution: "dsr-test@workspace:."
   dependencies:
     "@cfpb/cfpb-design-system": "npm:^5.8.0"
-    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578"
+    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react.git#89f23bfc00e44a00818efed869804fa61d54eb01"
     "@types/node": "npm:^24.13.2"
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"

@@ -13,6 +13,14 @@ yarn install
 yarn dev
 ```
 
+This branch installs `@cfpb/design-system-react` from GitHub at commit [`89f23bf`](https://github.com/cfpb/design-system-react/commit/89f23bfc00e44a00818efed869804fa61d54eb01) on [`chore/fix-slug-component-578`](https://github.com/cfpb/design-system-react/tree/chore/fix-slug-component-578) (PR #618). Pinning the commit keeps installs reproducible as the branch moves.
+
+To point at the live branch tip instead:
+
+```bash
+yarn add @cfpb/design-system-react@git+https://github.com/cfpb/design-system-react.git#chore/fix-slug-component-578
+```
+
 ## How styles are loaded
 
 In `src/main.tsx`:
