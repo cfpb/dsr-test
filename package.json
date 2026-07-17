@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@cfpb/cfpb-design-system": "^5.8.0",
-    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578",
+    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react.git#89f23bfc00e44a00818efed869804fa61d54eb01",
+    "@fontsource-variable/source-sans-3": "^5.2.9",
     "lit": "^3.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -24,6 +25,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "oxlint": "^1.75.0",
+    "sass": "^1.101.0",
     "typescript": "~6.0.3",
     "vite": "^8.1.5"
   }

@@ -1,0 +1,7 @@
+// Pattern B: full Design System CSS. Do not import
+// @cfpb/design-system-react/index.css — it duplicates DS rules and fonts.
+// Paths match @cfpb/cfpb-design-system package exports (same stack as src/index.scss).
+@use '@cfpb/cfpb-design-system/src/_abstracts' as *;
+@use '@cfpb/cfpb-design-system/src/_base' as *;
+@use '@cfpb/cfpb-design-system/src/_components' as *;
+@use '@cfpb/cfpb-design-system/src/_utilities' as *;

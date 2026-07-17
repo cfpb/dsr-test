@@ -4,9 +4,11 @@ import './App.css'
 function App() {
   return (
     <main className='demo'>
-      <Heading type='slug'>Design System React</Heading>
+      <Heading type='slug'>Pattern B — full DS CSS</Heading>
       <p className='demo__intro'>
-        Local demo for <code>@cfpb/design-system-react</code> components.
+        DSR components only; styles from{' '}
+        <code>@cfpb/cfpb-design-system</code>. No{' '}
+        <code>@cfpb/design-system-react/index.css</code>.
       </p>
 
       <section className='demo__section'>
@@ -24,6 +26,19 @@ function App() {
       <section className='demo__section'>
         <Heading type='2'>Heading</Heading>
         <Heading type='3'>Level 3 heading</Heading>
+      </section>
+
+      <section className='demo__section'>
+        <Heading type='2'>Hand-rolled DS markup</Heading>
+        <p className='demo__intro'>
+          Pattern B covers full DS modules (lists, expandables, …) that are not
+          in the DSR CSS barrel — useful when mixing DSR with plain DS classes.
+        </p>
+        <ul className='m-list'>
+          <li className='m-list_item'>First item</li>
+          <li className='m-list_item'>Second item</li>
+          <li className='m-list_item'>Third item</li>
+        </ul>
       </section>
     </main>
   )
