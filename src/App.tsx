@@ -13,17 +13,19 @@ function App() {
 
   return (
     <main className='demo'>
-      <Heading type='slug'>Pattern A — DSR CSS only</Heading>
+      <Heading type='slug'>Pattern B — broken (no dsr.css)</Heading>
       <p className='demo__intro'>
-        Styles from <code>@cfpb/design-system-react/index.css</code> (includes
-        fonts, curated DS modules, and Tabs). Do not also load full DS CSS.
+        Full Design System CSS is loaded, but{' '}
+        <code>@cfpb/design-system-react/dsr.css</code> is <strong>not</strong>.
+        Buttons look fine; Tabs miss DSR-only tab chrome.
       </p>
 
       <section className='demo__section'>
         <Heading type='2'>Tabs</Heading>
         <p className='demo__note'>
-          Inactive tabs should look like DSR links (blue, dotted underline).
-          The active tab is a gray chip sitting on the baseline.
+          Compare with Pattern A / Pattern B + <code>dsr.css</code>. Here,
+          inactive tabs may look like plain links or lack the gray active chip
+          because <code>.tablist</code> styles never loaded.
         </p>
         <TabList>
           <Tab

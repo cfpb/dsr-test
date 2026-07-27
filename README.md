@@ -1,46 +1,48 @@
-# dsr-test — Pattern A (`index.css` + Tabs)
+# dsr-test — Pattern B broken (full DS CSS, **no** `dsr.css`)
 
-Demo for the thin **`dsr.css` / Pattern B** work on
+This is the **why we need `dsr.css`** demo for
 [`design-system-react` `rad-dsr-css-cleanup`](https://github.com/cfpb/design-system-react/tree/rad-dsr-css-cleanup).
 
-**This branch = Pattern A (greenfield):** one stylesheet, Tabs included.
+Existing CFPB apps (Pattern B) already load full Design System CSS and must
+**not** also load DSR’s fat `index.css` (duplicates buttons/forms/fonts).
+
+Before `dsr.css` existed, Pattern B had no clean way to get **Tabs** styles:
+Tabs live only in DSR (`tab.scss`), not in `@cfpb/cfpb-design-system`.
+
+## What is wrong on this branch
+
+```ts
+import '@fontsource-variable/source-sans-3/index.css'
+import './base.scss' // full DS
+// Missing: import '@cfpb/design-system-react/dsr.css'
+```
+
+| Component | Expected on this branch |
+| --- | --- |
+| `Button` | Looks correct (DS CSS) |
+| `Heading` | Looks correct (DS CSS) |
+| `Tab` / `TabList` | Missing / incomplete tab chrome (no `.tablist` rules from DSR) |
 
 ## Sibling demos
 
-| Branch | What it shows |
+| Branch | Role |
 | --- | --- |
-| [`demo/dsr-css-pattern-a`](../tree/demo/dsr-css-pattern-a) (this) | Pattern A: `index.css` only — Tabs look correct |
-| [`demo/dsr-css-pattern-b-broken`](../tree/demo/dsr-css-pattern-b-broken) | Pattern B **without** `dsr.css` — Tabs miss DSR-only chrome (why the change is needed) |
-| [`demo/dsr-css-pattern-b`](../tree/demo/dsr-css-pattern-b) | Pattern B **with** `dsr.css` — Tabs fixed without loading fat `index.css` |
+| [`demo/dsr-css-pattern-a`](../tree/demo/dsr-css-pattern-a) | Pattern A — `index.css` (Tabs OK) |
+| [`demo/dsr-css-pattern-b-broken`](../tree/demo/dsr-css-pattern-b-broken) (this) | Pattern B without `dsr.css` (Tabs broken) |
+| [`demo/dsr-css-pattern-b`](../tree/demo/dsr-css-pattern-b) | Pattern B + `dsr.css` (Tabs fixed) |
 
 ## Setup
-
-Pins DSR to the GitHub branch:
-
-```json
-"@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react.git#rad-dsr-css-cleanup"
-```
 
 ```bash
 yarn install
 yarn dev
 ```
 
-## How styles are loaded
+Pins DSR to:
 
-```ts
-import '@cfpb/design-system-react/index.css'
+```json
+"@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react.git#rad-dsr-css-cleanup"
 ```
-
-| | |
-| --- | --- |
-| **You get** | Curated DS modules + fonts + Tabs / DSR overrides |
-| **You do not import** | Full DS CSS or `dsr.css` (already inside `index.css`) |
-
-## What to look for
-
-- Tabs: inactive = DSR link style (blue, dotted underline); active = gray chip on the baseline
-- Buttons / slug heading styled
 
 ## GitHub Pages
 
