@@ -1,13 +1,60 @@
-import { Button, Heading } from '@cfpb/design-system-react'
+import { useState } from 'react'
+import {
+  Button,
+  Heading,
+  Tab,
+  TabList,
+  TabPanel,
+} from '@cfpb/design-system-react'
 import './App.css'
 
 function App() {
+  const [activeTab, setActiveTab] = useState('one')
+
   return (
     <main className='demo'>
-      <Heading type='slug'>Design System React</Heading>
+      <Heading type='slug'>Pattern A — DSR CSS only</Heading>
       <p className='demo__intro'>
-        Local demo for <code>@cfpb/design-system-react</code> components.
+        Styles from <code>@cfpb/design-system-react/index.css</code> (includes
+        fonts, curated DS modules, and Tabs). Do not also load full DS CSS.
       </p>
+
+      <section className='demo__section'>
+        <Heading type='2'>Tabs</Heading>
+        <p className='demo__note'>
+          Inactive tabs should look like DSR links (blue, dotted underline).
+          The active tab is a gray chip sitting on the baseline.
+        </p>
+        <TabList>
+          <Tab
+            id='one'
+            value='one'
+            isActive={activeTab === 'one'}
+            iconLeft='list'
+            label='Tab one'
+            onClick={(event) => setActiveTab(event.currentTarget.value)}
+          />
+          <Tab
+            id='two'
+            value='two'
+            isActive={activeTab === 'two'}
+            iconLeft='chart'
+            label='Tab two'
+            onClick={(event) => setActiveTab(event.currentTarget.value)}
+          />
+          <Tab
+            id='three'
+            value='three'
+            isActive={activeTab === 'three'}
+            iconLeft='map'
+            label='Tab three'
+            onClick={(event) => setActiveTab(event.currentTarget.value)}
+          />
+        </TabList>
+        <TabPanel id={activeTab}>
+          <Heading type='4'>Panel {activeTab}</Heading>
+        </TabPanel>
+      </section>
 
       <section className='demo__section'>
         <Heading type='2'>Button</Heading>
