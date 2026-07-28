@@ -34,10 +34,12 @@ Pins DSR to:
 
 ```ts
 import '@fontsource-variable/source-sans-3/index.css'
-import './base.scss' // full DS
+import './base.scss' // full DS + branded font stack
 import '@cfpb/design-system-react/dsr.css'
 // No: import '@cfpb/design-system-react/index.css'
 ```
+
+Fontsource registers `@font-face`; `base.scss` also sets `--font-stack-branded` (DS defaults that token to `initial`, which falls back to `system-ui`).
 
 | | |
 | --- | --- |
