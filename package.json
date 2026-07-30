@@ -11,8 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cfpb/cfpb-design-system": "^5.8.0",
-    "@cfpb/design-system-react": "git+https://github.com/cfpb/design-system-react#chore/fix-slug-component-578",
+    "@cfpb/cfpb-design-system": "^5.8.1",
+    "@cfpb/design-system-react": "^2.0.1",
     "lit": "^3.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
