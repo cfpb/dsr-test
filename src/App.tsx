@@ -252,7 +252,7 @@ function App() {
             </section>
           </Layout.Content>
 
-          <Layout.Sidebar>
+          <Layout.Sidebar flushAllOnSmall>
             <SecondaryNav items={sidebarNav} ariaLabel='On this page' />
           </Layout.Sidebar>
         </Layout.Wrapper>
