@@ -114,28 +114,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cfpb/cfpb-design-system@npm:^5.8.1":
-  version: 5.8.1
-  resolution: "@cfpb/cfpb-design-system@npm:5.8.1"
+"@cfpb/cfpb-design-system@npm:^5.10":
+  version: 5.10.0
+  resolution: "@cfpb/cfpb-design-system@npm:5.10.0"
   dependencies:
-    "@fontsource-variable/source-sans-3": "npm:5.2.9"
+    "@fontsource-variable/source-sans-3": "npm:5.3.0"
     lit: "npm:3.3.3"
     tippy.js: "npm:6.3.7"
-  checksum: 10/1bef5d53c3140ceaf28994c38ddc3a70f5c230cdb3922d91d147627639eb85b0e82cb109ae54e6ae49b2cf8b4be0febb06c643fe1388458c911863305e272cad
+  checksum: 10/7f2d76ef1ba0d910595e92efd9e9a8f263e9fa45278152d24e2671d906dd1a9ed05dc8e64cbee614ebbd5a728948ec1d21f4556fe9129bb920642e7dbe726c84
   languageName: node
   linkType: hard
 
-"@cfpb/design-system-react@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@cfpb/design-system-react@npm:2.0.1"
+"@cfpb/design-system-react@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@cfpb/design-system-react@npm:2.0.3"
   dependencies:
     react-select: "npm:^5.10.2"
   peerDependencies:
-    "@cfpb/cfpb-design-system": 5.8.1
+    "@cfpb/cfpb-design-system": 5.10.0
     lit: ^3.3.3
     react: ^19.2.8
     react-dom: ^19.2.8
-  checksum: 10/f376e122c60509d26b328bde75e4ee6a61e851ec1652daa925ac07cf80973cbef71295ab5868f67b6317f9d34e4ada0e99ec8e70dca57149b1c2359f37cd6ad2
+  checksum: 10/17a8145e805e218805fba7de097890225cd29192f569024386296d6f8024fa634176934dbd30d62fe4df9382084a40dcfeb69597caa179b6a7b095c01deadae7
   languageName: node
   linkType: hard
 
@@ -310,10 +310,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/source-sans-3@npm:5.2.9":
-  version: 5.2.9
-  resolution: "@fontsource-variable/source-sans-3@npm:5.2.9"
-  checksum: 10/fa48c295cc37cda0ab9bcf08b5e37d156c39fa09cd3caac41bd1cbec6b6b134858ec779ce40aa9be3af8c7970142498896404f4e5a188b3dc17b670fcd8c34c8
+"@fontsource-variable/source-sans-3@npm:5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/source-sans-3@npm:5.3.0"
+  checksum: 10/0b5194594af68be1e9519fbbfa5646a7b825e5ea24e730e8704fab13771fd76181a74fe800383cc3c34d8283cfb0e43b285437eb9297c2113b287ad14fadbd0a
   languageName: node
   linkType: hard
 
@@ -827,8 +827,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dsr-test@workspace:."
   dependencies:
-    "@cfpb/cfpb-design-system": "npm:^5.8.1"
-    "@cfpb/design-system-react": "npm:^2.0.1"
+    "@cfpb/cfpb-design-system": "npm:^5.10"
+    "@cfpb/design-system-react": "npm:^2.0.3"
     "@types/node": "npm:^24.13.2"
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"

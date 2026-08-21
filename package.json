@@ -11,8 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cfpb/cfpb-design-system": "^5.8.1",
-    "@cfpb/design-system-react": "^2.0.1",
+    "@cfpb/cfpb-design-system": "^5.10",
+    "@cfpb/design-system-react": "^2.0.3",
     "lit": "^3.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
