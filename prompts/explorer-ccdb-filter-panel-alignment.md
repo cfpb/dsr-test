@@ -54,6 +54,7 @@ Do not move these concerns into DSR:
 
 - Redux state or actions
 - aggregation fetching and response normalization
+- reconstruction of selected options missing from aggregation responses
 - complaint field names
 - selected-filter sorting and parent/child replacement algorithms
 - Explorer's Select all behavior
@@ -70,10 +71,54 @@ Do not move these concerns into DSR:
   toggle, loading overlay, age filter, and date layouts.
 - CCDB uses explicit `hr` elements between top-level sections and removes the
   well's top border because its filter well touches the search well above it.
-- The applications use different filtering and parent/child selection logic,
-  despite rendering nearly identical rows.
+- Explorer does not yet canonicalize a complete set of selected children to the
+  parent key; CCDB does. The normalization contract below should align them.
 - CCDB supports disabled aggregation options. Explorer does not currently expose
   that option in its aggregation component interfaces.
+
+## API filtering and missing selected options
+
+The Explorer and CCDB APIs use the same basic faceted-search approach. Each
+aggregation excludes its own field's filter while continuing to apply filters
+from other groups. Consequently, a selected product can reduce an issue or
+sub-issue bucket to zero, for example, and OpenSearch will omit that bucket from
+the aggregation response even though it remains selected in application state.
+
+Both UIs already reconstruct missing selected options:
+
+- Explorer uses `addMissingFilters()` for top-level options and
+  `addMissingSubOptions()` for children inside an aggregation branch.
+- CCDB uses `sortSelThenCount()`, `insertParentFilter()`, and
+  `insertChildFilter()` before rendering its nested filters.
+
+This behavior is therefore not an Explorer-specific difference. It is required
+by both applications and should remain application/query logic outside DSR.
+
+The APIs use different aggregation sizes—CCDB requests up to 200 issues, 250
+sub-issues, 30 products, and 90 sub-products, while Explorer generally requests
+100 parent and child buckets—but either API can omit buckets due to filters from
+another group regardless of those limits.
+
+## Parent/child selection normalization
+
+Explorer should align with CCDB's canonical selection behavior:
+
+- Store either the parent key or a proper subset of child keys, never both.
+- Selecting the final missing child replaces all child keys with the parent key.
+- Deselecting one child from a selected parent expands the parent into every
+  known sibling except the deselected child.
+- Clicking an indeterminate parent replaces its child keys with the parent.
+- Removing a branch should use exact parent/child matching rather than broad
+  substring matching.
+- Multi-add and replacement operations should deduplicate their results.
+- Normalization must operate on the combination of API options and reconstructed
+  selected options so filters that disappeared from aggregations are preserved.
+
+Collapsing all currently known children to a parent can broaden the effective
+selection if another filter has temporarily hidden additional children. CCDB
+already behaves this way, and it is consistent with the parent meaning all of
+its children, including options that may reappear when another filter is
+removed.
 
 ## Panel-shell recommendation
 
@@ -82,4 +127,3 @@ the common surface, but width, neighboring borders, mobile controls, loading,
 and state remain application-specific. Extract the expandable and aggregation
 rows first; revisit a configurable panel shell only after both applications use
 the shared primitives.
-
