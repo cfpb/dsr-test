@@ -318,11 +318,84 @@ export const LineChart = ({ data, colorMap, onTooltipChange }: LineChartProps) =
 
 ---
 
-## 5. Execution Checklist for the Britecharts Repo
+## 5. Follow-Up Cleanup & Polish Checklist (Post-Pruning)
+
+Following the initial chart pruning on the `prune-charts` branch, execute these follow-up cleanups to ensure a clean package and frictionless integration with `explorer-app`:
+
+### 5.1 Package Configuration & Dependency Cleanup (`cfpb-britecharts`)
+
+- [ ] **1. D3 Dependency Deduplication:**
+  - Remove `"d3": "^7.9.0"` from `"dependencies"` in `package.json`.
+  - Keep `"d3": "^7.0.0"` exclusively in `"peerDependencies"`.
+  - *Why:* Prevents host bundlers from packing two copies of D3 into client bundles, eliminating ~40–60 KB of duplicate code.
+
+- [ ] **2. Export Aliasing for CamelCase & Kebab-Case Subpaths:**
+  - Add camelCase export aliases (`"./stackedArea"`, `"./miniTooltip"`) in `package.json` `exports` alongside kebab-case:
+    ```json
+    "./stacked-area": {
+      "import": "./dist/esm/charts/stacked-area.js",
+      "require": "./dist/umd/stackedArea.min.js",
+      "types": "./dist/types/charts/stacked-area.d.ts"
+    },
+    "./stackedArea": {
+      "import": "./dist/esm/charts/stacked-area.js",
+      "require": "./dist/umd/stackedArea.min.js",
+      "types": "./dist/types/charts/stacked-area.d.ts"
+    },
+    "./mini-tooltip": {
+      "import": "./dist/esm/charts/mini-tooltip.js",
+      "require": "./dist/umd/miniTooltip.min.js",
+      "types": "./dist/types/charts/mini-tooltip.d.ts"
+    },
+    "./miniTooltip": {
+      "import": "./dist/esm/charts/mini-tooltip.js",
+      "require": "./dist/umd/miniTooltip.min.js",
+      "types": "./dist/types/charts/mini-tooltip.d.ts"
+    },
+    "./react": {
+      "import": "./dist/esm/react/use-britechart.js",
+      "require": "./dist/umd/useBritechart.min.js",
+      "types": "./dist/types/react/use-britechart.d.ts"
+    }
+    ```
+
+- [ ] **3. Build & Test Configuration Housekeeping:**
+  - Audit `webpack.config.js` / build scripts: remove lingering entrypoints or alias rules referencing deleted charts (`bar`, `bullet`, `donut`, `heatmap`, `scatter-plot`, etc.).
+  - Audit root SCSS entrypoints (`src/styles/` or `dist/css/`): ensure stylesheets for deleted charts are not imported or compiled into bundle outputs.
+  - Audit test configurations (Karma/Jasmine/Jest): remove test runner paths and fixtures associated with pruned charts.
+  - Clean up obsolete `devDependencies` or npm scripts no longer needed after pruning.
+
+- [ ] **4. TypeScript Type Generation & Hook Validation:**
+  - Verify that `dist/types/` emits clean `.d.ts` definitions for all retained charts (`line`, `stacked-area`, `row`, `tooltip`, `mini-tooltip`, `useBritechart`).
+  - Verify builder method signatures (`.margin()`, `.width()`, `.aspectRatio()`, `.grid()`, `.colorSchema()`, `.dateLabel()`, `.on()`) return the typed chart builder instance for method chaining.
+
+---
+
+### 5.2 Explorer App Follow-up Integration Checklist (`explorer-app`)
+
+Once the modernized `cfpb-britecharts` package is published or linked:
+
+- [ ] **1. Upgrade Dependency:**
+  - Update `package.json` to point to the newly published version (e.g. `cfpb-britecharts@^2.6.0`).
+  - Remove deep UMD import paths across `LineChart.tsx`, `StackedAreaChart.tsx`, `RowChart.tsx`, and their printable variants in favor of named/subpath imports (`import { line, tooltip } from 'cfpb-britecharts'`).
+
+- [ ] **2. Refactor Chart Components to `useBritechart`:**
+  - Replace manual DOM `useRef`, `select`, `setTimeout` mounts, and manual unmount cleanup in `LineChart.tsx`, `StackedAreaChart.tsx`, and `RowChart.tsx` with the declarative `useBritechart` hook.
+  - Reduce chart component size from ~300 lines down to ~50 lines per component.
+
+- [ ] **3. Remove Ambient Shims & Dead Helpers:**
+  - Delete `src/types/britecharts.d.ts` (ambient `.d.ts` definitions).
+  - Remove ad-hoc width computation functions (`getLineChartWidth`, `getStackedAreaChartWidth`, `computeContainerWidth`) in favor of container client widths.
+  - Verify zero TypeScript or linting errors with `yarn lint` and run regression tests with `yarn test`.
+
+---
+
+## 6. Execution Checklist for the Britecharts Repo
 
 - [ ] **Step 1:** Configure `tsconfig.build.json` for `.d.ts` generation from JSDoc.
 - [ ] **Step 2:** Configure ESM output in build configuration (Rollup / `tsup` / Webpack).
-- [ ] **Step 3:** Move `d3` to `peerDependencies` in `package.json`.
-- [ ] **Step 4:** Define `exports` map in `package.json` for root and subpath modules.
-- [ ] **Step 5:** Verify `.d.ts` output accuracy and validate against chart test suites.
-- [ ] **Step 6:** Publish new version (`v2.6.0` or next release tag) and test in `explorer-app`.
+- [ ] **Step 3:** Move `d3` to `peerDependencies` in `package.json` and remove from `dependencies`.
+- [ ] **Step 4:** Define `exports` map in `package.json` with camelCase and kebab-case aliases.
+- [ ] **Step 5:** Clean up remaining build, test, and style configs for pruned charts.
+- [ ] **Step 6:** Verify `.d.ts` output accuracy and validate against chart test suites.
+- [ ] **Step 7:** Publish new version (`v2.6.0` or next release tag) and test in `explorer-app`.
