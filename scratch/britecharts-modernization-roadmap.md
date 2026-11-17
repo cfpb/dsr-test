@@ -20,7 +20,52 @@ Currently, `explorer-app` consumes Britecharts via legacy pre-compiled UMD bundl
 
 ---
 
-## 2. Core Modernization Roadmap for Britecharts
+## 2. Chart Inventory & Pruning Audit
+
+An audit across CFPB front-end repositories (**`explorer-app`** and **`ccdb5-ui`**) was conducted to determine the exact chart modules required in production. Because `cfpb-britecharts` is an agency fork, maintaining unused upstream charts adds unnecessary build, test, and type maintenance overhead.
+
+### 2.1 Project Audit Summary
+* **`explorer-app` (`frontend-react`):** Actively utilizes **5 chart and tooltip modules** for the Trends views.
+* **`ccdb5-ui`:** Contains **0 chart dependencies**. `ccdb5-ui` does not import `britecharts` or `d3` and has no chart rendering components.
+
+### 2.2 Charts to Keep (Production Scope)
+
+The following 5 chart/tooltip modules (and their internal `helpers/`) represent the entire active footprint and should be the sole focus of the modernization effort:
+
+| Module | Source Path | Consuming Components (`explorer-app`) | Application Role |
+| :--- | :--- | :--- | :--- |
+| **`line`** | `src/charts/line.js` | `LineChart.tsx`<br>`LineChartPrintable.js` | Multi-series time trend lines across Company, Product, and Issue lenses. |
+| **`stacked-area`** | `src/charts/stacked-area.js` | `StackedAreaChart.tsx`<br>`StackedAreaChartPrintable.js` | Stacked area graphs for complaint volume trends over time. |
+| **`row`** | `src/charts/row.js` | `RowChart.tsx`<br>`RowChartPrintable.js` | Horizontal row/bar drill-downs for top categories and sub-categories. |
+| **`tooltip`** | `src/charts/tooltip.js` | `LineChart.tsx`<br>`StackedAreaChart.tsx` | Cursor hover calculations and line guide interactions for time-series charts. |
+| **`mini-tooltip`** | `src/charts/mini-tooltip.js` | `RowChart.tsx`<br>`RowChartPrintable.js` | Value hover tooltips attached directly to individual horizontal row bars. |
+| **`helpers/`** | `src/charts/helpers/*.js` | Internal to above charts | Shared utilities (`axis`, `color`, `constants`, `date`, `export`, `formatters`, `grid`, `number`, `text`). |
+
+### 2.3 Unused Charts to Deprecate / Prune
+
+The remaining **12 chart modules** are not imported or referenced anywhere across CFPB repositories and can be pruned or excluded from modern packaging:
+
+* `bar.js` (Standard vertical bar chart)
+* `brush.js` (Time brush selector)
+* `bullet.js` (Bullet graph)
+* `donut.js` (Donut / Pie chart)
+* `grouped-bar.js` (Grouped vertical bar chart)
+* `grouped-row.js` (Grouped horizontal row chart)
+* `heatmap.js` (Matrix heatmap)
+* `legend.js` (Standalone SVG legend component)
+* `scatter-plot.js` (Scatter / bubble plot)
+* `sparkline.js` (Inline sparklines)
+* `stacked-bar.js` (Stacked vertical bar chart)
+* `step.js` (Step line chart)
+
+### 2.4 Benefits of Scope Reduction
+1. **Targeted TypeScript Typing:** Limits JSDoc `.d.ts` generation and strict type verification strictly to the 5 active chart APIs.
+2. **Lean Package Exports:** Keeps the `exports` map clean and lightweight (`./line`, `./stacked-area`, `./row`, `./tooltip`, `./mini-tooltip`).
+3. **Reduced Test & Maintenance Burden:** Eliminates dozens of legacy Karma/Jasmine test suites and deprecated chart configurations.
+
+---
+
+## 3. Core Modernization Roadmap for Britecharts
 
 ### Phase 1: Modern Packaging & Dual Module Distribution (P0)
 
@@ -61,6 +106,11 @@ Update `package.json` to expose modern standard exports alongside backward-compa
       "import": "./dist/esm/charts/row.js",
       "require": "./dist/umd/row.min.js",
       "types": "./dist/types/charts/row.d.ts"
+    },
+    "./mini-tooltip": {
+      "import": "./dist/esm/charts/mini-tooltip.js",
+      "require": "./dist/umd/miniTooltip.min.js",
+      "types": "./dist/types/charts/mini-tooltip.d.ts"
     },
     "./dist/umd/*": "./dist/umd/*"
   }
@@ -203,11 +253,11 @@ Add an optional `.autoResize(true)` method to charts. When enabled, Britecharts 
 
 ---
 
-## 3. Consuming Modern Britecharts in Explorer App
+## 4. Consuming Modern Britecharts in Explorer App
 
 Once the Britecharts update is published:
 
-### 3.1 Clean Named Imports
+### 4.1 Clean Named Imports
 ```typescript
 // Before:
 import line from 'britecharts/dist/umd/line.min';
@@ -220,7 +270,7 @@ import line from 'cfpb-britecharts/line';
 import tooltip from 'cfpb-britecharts/tooltip';
 ```
 
-### 3.2 Refactored `LineChart` Component Example
+### 4.2 Refactored `LineChart` Component Example
 ```tsx
 import { LineChart as BriteLineChart, line, tooltip } from 'cfpb-britecharts';
 import { useBritechart } from 'cfpb-britecharts/react';
@@ -261,14 +311,14 @@ export const LineChart = ({ data, colorMap, onTooltipChange }: LineChartProps) =
 };
 ```
 
-### 3.3 Cleanup in `explorer-app`
+### 4.3 Cleanup in `explorer-app`
 - Remove `src/types/britecharts.d.ts` (ambient type definitions).
 - Remove imperative `setTimeout` redraw hacks and manual DOM removal logic.
 - Remove container width calculation helpers (`getLineChartWidth`, `computeContainerWidth`) in favor of container client widths or built-in auto-resize.
 
 ---
 
-## 4. Execution Checklist for the Britecharts Repo
+## 5. Execution Checklist for the Britecharts Repo
 
 - [ ] **Step 1:** Configure `tsconfig.build.json` for `.d.ts` generation from JSDoc.
 - [ ] **Step 2:** Configure ESM output in build configuration (Rollup / `tsup` / Webpack).
